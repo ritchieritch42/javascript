@@ -1,0 +1,8 @@
+let text = "Please locate where 'locate' occurs!";
+let index = text.indexOf("locate");
+
+console.log('INDEX OF LOCATE IS', index);
+
+let secondIndex = text.indexOf('locate', 15);
+
+console.log('SECOND INDEX OF LOCATE IS', secondIndex);

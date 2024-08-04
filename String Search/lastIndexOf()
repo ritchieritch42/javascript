@@ -1,0 +1,49 @@
+// the text that we're finding the last index of
+let text = "Please locate where 'locate' occurs!";
+
+// lastIndexOf without position parameter
+// text = "Please locate where 'locate' occurs!"
+let index = text.lastIndexOf('locate');
+console.log('LAST INDEX OF LOCATE IS', index);
+
+// lastIndexOf if text is not round; returns -1
+// text = "Please locate where 'locate' occurs!"
+let secondIndex = text.lastIndexOf("John");
+let res = '';
+if (secondIndex == -1) {
+ res = `NOT FOUND`;
+} else {
+    resTwo = fourthIndex;
+}
+console.log("LAST INDEX OF JOHN IS", res);
+
+// lastIndexOf with position parameter
+// text = "Please locate where 'locate' occurs!"
+let thirdIndex = text.lastIndexOf("locate", 15);
+console.log("STARTING AT POSITION 15, LAST INDEX OF LOCATE IS", thirdIndex);
+
+// lastIndexOf with position parameter value where the string will not occue; will return -1
+// text = "Please locate where 'locate' occurs!"
+let fourthIndex = text.lastIndexOf("locate", 6);
+let resTwo = '';
+if (secondIndex == -1) {
+ resTwo = `NOT FOUND`;
+} else {
+    resTwo = fourthIndex;
+}
+console.log('STARTING AT POSITION 6, LAST INDEX OF LOCATE IS', resTwo);
+
+// more examples
+console.log("canal".lastIndexOf("a")); // returns 3
+console.log("canal".lastIndexOf("a", 2)); // returns 1
+console.log("canal".lastIndexOf("a", 0)); // returns -1
+console.log("canal".lastIndexOf("x")); // returns -1
+console.log("canal".lastIndexOf("c", -5)); // returns 0
+console.log("canal".lastIndexOf("c", 0)); // returns 0
+console.log("canal".lastIndexOf("")); // returns 5
+console.log("canal".lastIndexOf("", 2)); // returns 2
+
+// lastIndexOf() is case sensitive
+console.log("Car".lastIndexOf("c")); // returns -1
+console.log("car".lastIndexOf("c")); // returns 0
+console.log("car".lastIndexOf("c", -22)); // returns 0
