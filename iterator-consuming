@@ -1,0 +1,28 @@
+// for..of loop
+const it = [1, 2, 3, 4, 6, 7, 8, 9, 10];
+
+for (let val of it) {
+    console.log(`Iterator value: ${ val }`);
+}
+
+// ... iterable
+// "..." known as Spread syntax "expands" an array into its elements
+// [1, 2, 3] ... into 1, 2, 3
+function sum(x, y, z) {
+    return x + y + z;
+}
+
+const numbers = [1, 2, 3];
+console.log(sum(...numbers));
+
+// here's another example of spread syntax, taking an array and putting it into an object
+const obj = {... numbers };
+console.log(obj);
+
+// and another example of spread syntax in function calls
+function myFunction(x, y, z) {
+    return x + y + z;
+}
+const args = [0, 1, 2];
+result = myFunction(...args);
+console.log(result);
