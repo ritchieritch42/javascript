@@ -26,3 +26,10 @@ function myFunction(x, y, z) {
 const args = [0, 1, 2];
 result = myFunction(...args);
 console.log(result);
+
+// and a final example for my own processing of how useful the spread syntax can be
+const lalaland = ['la', 'la', 'land'];
+const finland = ['fin', 'land'];
+
+const allLand = [...lalaland, ...finland];
+console.log(...allLand);
