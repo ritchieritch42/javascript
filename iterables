@@ -1,0 +1,50 @@
+// Iterables include strings, arrays, maps, sets, and others.
+var arr = [ 10, 20, 30];
+
+for (let val of arr) {
+    console.log(`Array value: ${ val }`);
+}
+
+// You can shallow copy with the ...spread operator
+var arrCopy = [ ...arr ];
+console.log(arrCopy);
+
+// As well as iterate the characters in a string one at a time
+var greeting = "Hello world!";
+var chars = [ ...greeting ];
+
+console.log(chars);
+
+// Maps are a data structure which uses objects as keys, associating a value, which can be of any type
+//, with that object.
+// Maps have a different default way of iterating in that the iteration is no solely over 
+// the map's values but instead it's ENTRIES. Entries are tuples (2-element array) including
+// a key and a value.
+
+// Here, the btn1 & btn2 declarations are in place of a DOM object you would be grabbing
+const btn1 = "button1";
+const btn2 = "button2";
+
+var buttonNames = new Map();
+buttonNames.set(btn1,"Button 1");
+buttonNames.set(btn2,"Button 2");
+
+console.log(buttonNames);
+
+for (let btnName of buttonNames.values()) {
+    console.log(btnName);
+}
+
+for(let btnName of buttonNames) {
+    console.log(btnName);
+}
+
+// here's an example of a map where we iterate over an array to create a map of buttons
+var buttonArray = [1, 2 ,3, 4, 5 ];
+var buttonMap = new Map();
+
+for (let btn of buttonArray) {
+    buttonMap.set(btn, `${ btn }`);
+}
+
+console.log(buttonMap);
