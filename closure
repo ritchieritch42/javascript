@@ -18,3 +18,23 @@ console.log(counter1());
 console.log(counter1());
 console.log(counter2());
 console.log(counter2());
+
+// Here is another example using a function factory
+// In this example, 'factor' is remembered and accessible outside of the multiplier function scope
+// That's why we can set the factor later on and use this to define new variables, which are
+// instances of the multiplier function.
+// Compared to the previous example, the 'factor' variable is a FIXED  variable within the closure
+// (ie, factor stays the same and isn't added to, and must be defined when calling on the multiplier
+// function)
+
+function multiplier(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+
+let double = multiplier(2);
+let triple = multiplier(3);
+
+console.log(double(5));
+console.log(triple(5));
