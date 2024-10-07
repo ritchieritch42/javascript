@@ -1,0 +1,20 @@
+// Here is an example of how closure works
+// The count variable remains in memory even after the outer function is finished
+// Because of this, each time you call back on the variable counter1/counter2,
+// the count increases, shown in the console log.
+function makeCounter() {
+    let count = 0; // outer variable which is enclosed
+
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+let counter1 = makeCounter();
+let counter2 = makeCounter();
+
+console.log(counter1());
+console.log(counter1());
+console.log(counter2());
+console.log(counter2());
