@@ -30,3 +30,5 @@ var otherHomework = {
 };
 
 assignment.call(otherHomework);
+
+// Creating functions with the "this" keyword makes the functions dynamically accessible. 
