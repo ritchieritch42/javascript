@@ -38,3 +38,31 @@ let triple = multiplier(3);
 
 console.log(double(5));
 console.log(triple(5));
+
+// Private variables example
+// Notice that when we declare the person "John", after we get his age
+// & celebrate his birthday, his age still persists
+// Since there is a closure around getName & getAge
+function person(name) {
+    let age = 0;
+
+    return {
+        getName: function() {
+            return name;
+        },
+        getAge: function() {
+            return age;
+        },
+        celebrateBirthday: function() {
+            age++;
+            return `Happy Birthday, ${name}! You are now ${age} years old.`;
+        }
+    };
+}
+
+let john = person("John");
+
+console.log(john.getName());
+console.log(john.getAge());
+console.log(john.celebrateBirthday());
+console.log(john.getAge());
