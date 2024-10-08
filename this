@@ -12,6 +12,7 @@ function classroom(teacher) {
     };
 }
 
+// Assignment is a reference to the study function, which uses this keywords for dynamic context
 var assignment = classroom("Kyle");
 
 // Here we are invoking assignment inside of the homework context.
