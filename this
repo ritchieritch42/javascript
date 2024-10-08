@@ -1,3 +1,6 @@
+// One powerful mechanism in JS is the this keyword
+// This is a dynamic characteric that's determined each time the function using it is called
+
 // How can we reference this.topic in this function?
 // There's two methods presented below.
 
