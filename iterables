@@ -1,23 +1,23 @@
 // Iterables include strings, arrays, maps, sets, and others.
-var arr = [ 10, 20, 30];
+var arr = [10, 20, 30];
 
 for (let val of arr) {
-    console.log(`Array value: ${ val }`);
+  console.log(`Array value: ${val}`);
 }
 
 // You can shallow copy with the ...spread operator
-var arrCopy = [ ...arr ];
+var arrCopy = [...arr];
 console.log(arrCopy);
 
 // As well as iterate the characters in a string one at a time
 var greeting = "Hello world!";
-var chars = [ ...greeting ];
+var chars = [...greeting];
 
 console.log(chars);
 
 // Maps are a data structure which uses objects as keys, associating a value, which can be of any type
 //, with that object.
-// Maps have a different default way of iterating in that the iteration is no solely over 
+// Maps have a different default way of iterating in that the iteration is no solely over
 // the map's values but instead it's ENTRIES. Entries are tuples (2-element array) including
 // a key and a value.
 
@@ -26,29 +26,36 @@ const btn1 = "button1";
 const btn2 = "button2";
 
 var buttonNames = new Map();
-buttonNames.set(btn1,"Button 1");
-buttonNames.set(btn2,"Button 2");
+buttonNames.set(btn1, "Button 1");
+buttonNames.set(btn2, "Button 2");
 
 console.log(buttonNames);
 
 for (let btnName of buttonNames.values()) {
-    console.log(btnName);
+  console.log(btnName);
 }
 
-for(let btnName of buttonNames) {
-    console.log(btnName);
+for (let btnName of buttonNames) {
+  console.log(btnName);
 }
 
 // here's an example of a map where we iterate over an array to create a map of buttons
-var buttonArray = [1, 2 ,3, 4, 5 ];
+var buttonArray = [1, 2, 3, 4, 5];
 var buttonMap = new Map();
 
 for (let btn of buttonArray) {
-    buttonMap.set(btn, `${ btn }`);
+  buttonMap.set(btn, `${btn}`);
 }
 
 console.log(buttonMap);
 
+<<<<<<< HEAD
+// here's an example showing the index and the value
+var arrIV = [10, 20, 30];
+for (let [idx, val] of arr.entries()) {
+  console.log(`[${idx}]: ${val}`);
+}
+=======
 // here's a last example with maps where we print out the index and value
 var arrVal = [10, 20, 30];
 var mapVal = new Map();
@@ -56,3 +63,4 @@ var mapVal = new Map();
 for (let [idx,val] of arrVal.entries()) {
     console.log(`[${ idx }]: ${ val }`);
 }
+>>>>>>> 45c3e7cffb682815d4d6c8426b9be478b1788f1c
