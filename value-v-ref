@@ -1,0 +1,5 @@
+const myName = "Caleb";
+const yourName = myName;
+
+console.log(myName);
+console.log(yourName);
