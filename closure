@@ -1,0 +1,68 @@
+// Here is an example of how closure works
+// The count variable remains in memory even after the outer function is finished
+// Because of this, each time you call back on the variable counter1/counter2,
+// the count increases, shown in the console log.
+function makeCounter() {
+    let count = 0; // outer variable which is enclosed
+
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+let counter1 = makeCounter();
+let counter2 = makeCounter();
+
+console.log(counter1());
+console.log(counter1());
+console.log(counter2());
+console.log(counter2());
+
+// Here is another example using a function factory
+// In this example, 'factor' is remembered and accessible outside of the multiplier function scope
+// That's why we can set the factor later on and use this to define new variables, which are
+// instances of the multiplier function.
+// Compared to the previous example, the 'factor' variable is a FIXED  variable within the closure
+// (ie, factor stays the same and isn't added to, and must be defined when calling on the multiplier
+// function)
+
+function multiplier(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+
+let double = multiplier(2);
+let triple = multiplier(3);
+
+console.log(double(5));
+console.log(triple(5));
+
+// Private variables example
+// Notice that when we declare the person "John", after we get his age
+// & celebrate his birthday, his age still persists
+// Since there is a closure around getName & getAge
+function person(name) {
+    let age = 0;
+
+    return {
+        getName: function() {
+            return name;
+        },
+        getAge: function() {
+            return age;
+        },
+        celebrateBirthday: function() {
+            age++;
+            return `Happy Birthday, ${name}! You are now ${age} years old.`;
+        }
+    };
+}
+
+let john = person("John");
+
+console.log(john.getName());
+console.log(john.getAge());
+console.log(john.celebrateBirthday());
+console.log(john.getAge());

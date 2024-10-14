@@ -1,0 +1,26 @@
+// The 'this' keyword shines in the context of prototype delegated function calls.
+// Consider, no pun intended, this:
+
+var homework = {
+    study() {
+        console.log(`Please study ${ this.topic }`);
+    }
+};
+
+var jsHomework = Object.create(homework);
+jsHomework.topic = "JS";
+// jsHomework.study() delegates to homework.study() BUT its this context for that execution
+// is resolved by jsHomework because of the way the function is called.
+jsHomework.study();
+
+var mathHomework = Object.create(homework);
+mathHomework.topic = "Math";
+// The same delegation/context situation happens here as well.
+mathHomework.study();
+
+// 'this' plays a critical role in maintaining the correct context when methods are delegated
+// through the prototypal chain
+
+// Other languages would process study to being entirely resolved by the homework function
+// reference to study(), but in JS 'this' creates a dynamic way of allowing us to navigate
+// the chain of objects.

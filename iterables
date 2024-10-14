@@ -49,8 +49,18 @@ for (let btn of buttonArray) {
 
 console.log(buttonMap);
 
+<<<<<<< HEAD
 // here's an example showing the index and the value
 var arrIV = [10, 20, 30];
 for (let [idx, val] of arr.entries()) {
   console.log(`[${idx}]: ${val}`);
 }
+=======
+// here's a last example with maps where we print out the index and value
+var arrVal = [10, 20, 30];
+var mapVal = new Map();
+
+for (let [idx,val] of arrVal.entries()) {
+    console.log(`[${ idx }]: ${ val }`);
+}
+>>>>>>> 45c3e7cffb682815d4d6c8426b9be478b1788f1c

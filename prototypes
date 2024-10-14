@@ -1,0 +1,34 @@
+// A prototype is a characteristic of an object, & specifically resolution of a property access.
+// It is a linkage between two objects. This linkage occurs when an object is created.
+// A series of objects linked together via prototypes is call the "prototype chain".
+// The objects can delegate tasks to each other this way.
+
+var homework = {
+    topic: "JS"
+};
+
+console.log(
+    // This delegation doesn't work for homework, but does for the Object.protoype.
+    // Object.prototype.toString() is invoked instead of homework.toString().
+    homework.toString()
+);
+
+var otherHomework = Object.create(homework);
+
+console.log(
+    // otherHomework is linked to homework is linked to Object.prototype
+    otherHomework.topic
+);
+
+// Assigning the property of an object, despite it's linkage, will apply to the specific object
+// and not pull from the prototype chain.
+// Here's an example of this below:
+
+console.log(homework.topic);
+console.log(otherHomework.topic);
+otherHomework.topic = "Math";
+console.log(otherHomework.topic);
+console.log(homework.topic);
+
+// The only way to avoid prototype linkage and initial properties being attached via that linkage
+// is to use the Object.create(null) syntax.
