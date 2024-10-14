@@ -1,5 +1,23 @@
-const myName = "Caleb";
-const yourName = myName;
+// Primitives are assigned by value
+var myName = "Caleb";
+var yourName = myName;
+
+myName = "Carol";
 
 console.log(myName);
 console.log(yourName);
+
+// Objects are assigned by reference
+var myAddress = {
+  street: "7676 West 106th Street",
+  city: "Overland Park",
+  state: "Kansas",
+};
+
+var yourAddress = myAddress;
+
+myAddress.street = "7575 West 106th Street";
+
+console.log(yourAddress.street);
+
+// There is no way to change this assignment in JS
