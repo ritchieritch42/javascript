@@ -25,3 +25,26 @@ var mySecondFunction = function somethingElse(something) {
 };
 
 console.log(mySecondFunction.name);
+
+// You'll need to determine if the function name has a purpose
+// or will later on.
+
+// Anonymous functions can also be used in object literals, the syntax
+// is a bit different.
+// REMINDER --- an object literal is a list of name:value
+// pairs inside curly braces {}.
+
+const somethingDifferent = {
+  print() {
+    console.log("Hello");
+  },
+  printAgain() {
+    print();
+  },
+  // Anonymous function declaration in object literal
+  printThird: function () {
+    this.printAgain();
+  },
+};
+
+console.log(somethingDifferent.printThird.name);
