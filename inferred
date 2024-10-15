@@ -10,9 +10,18 @@ var myFunction = function (something) {
 };
 
 // This name property will return the name of the function
-// inferrred.
+// inferred.
 console.log(myFunction.name);
 
 // Know that this "name inference" only happens in limited cases
 // such as when the function expressed is assigned to
 // a variable with " = ".
+
+// When you do give a name to the function expression,
+// it takes precendence over the inferred name.
+var mySecondFunction = function somethingElse(something) {
+  let me = "Caleb";
+  return me + "Carol" + something;
+};
+
+console.log(mySecondFunction.name);
