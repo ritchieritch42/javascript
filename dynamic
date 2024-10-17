@@ -1,0 +1,30 @@
+/* 
+Dynamic programming is a technique in computer science used 
+to solve complex problems by breaking them down into smaller,
+overlapping subproblems, and storing the solutions to these 
+subproblems. This approach avoids redundant calculations and improves
+efficiency by reusing previously computed results.
+*/
+
+// The most referenced example of dynamic programming is
+// the fibonacci sequence.
+
+function fibonacci(n) {
+  let fib = new Array(n + 1);
+
+  // Set your base cases that will stop
+  // the stack.
+  fib[0] = 0;
+  fib[1] = 1;
+
+  // Calculate the fibonacci number of the previous numbers
+  // And store them in the fib array to reference for later.
+  for (let i = 2; i <= n; i++) {
+    fib[i] = fib[i - 1] + fib[i - 2];
+  }
+
+  return fib[n];
+}
+
+let n = 3;
+console.log(`The ${n} Fibonacci number is: ${fibonacci(n)}`);
