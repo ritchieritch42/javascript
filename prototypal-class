@@ -1,0 +1,29 @@
+// Here's the object.create() syntax, which is new since es6
+var Classroom = {
+  welcome() {
+    console.log("Welcome, students!");
+  },
+};
+
+var mathClass = Object.create(Classroom);
+
+mathClass.welcome();
+
+// Here's the old syntax
+function Car() {
+  // ..
+}
+
+Car.prototype.rev = function gas() {
+  console.log("Rrrrr");
+};
+
+var camry = new Car();
+
+camry.rev();
+
+// The new ES6 class mechanism is syntactic sugar for the
+// prototypal constructor.
+// In the previous syntax, the prototype property can
+// be used to dynamically/on-the-fly declare properties
+// for the class, but isn't the prototype itself.
