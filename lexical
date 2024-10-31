@@ -1,0 +1,54 @@
+// Lexical scope determines the accessibility of vars & functions
+// based on where they are defined in the source code.
+// Lexical scope = forever static.
+
+// There's global, local, nested, & block scope in JS
+
+// Global
+// name var can be accessed anywhere
+let name = "Caleb";
+
+function sayHello() {
+  console.log("Hello " + name);
+}
+
+sayHello();
+
+// Local
+// spouseName can be accessed within the function
+function sayBye() {
+  let spouseName = "Carol";
+
+  console.log("Bye " + spouseName);
+}
+
+sayBye();
+
+// Nested
+// dogName can be used from within the parent function.
+// When a function is defined within another, it has access
+// to vars defined in the parent function.
+function outer() {
+  let dogName = "Cooper";
+
+  function inner() {
+    console.log("I'll be back " + dogName);
+  }
+
+  inner();
+}
+
+outer();
+
+// Block
+// dadTitle can be used anywhere in the block.
+function saySoon() {
+  let dadTitle = "Dad";
+
+  if (true) {
+    let message = "will be home soon!";
+    console.log(dadTitle + " " + message);
+  }
+}
+
+saySoon();

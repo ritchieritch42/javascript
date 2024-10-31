@@ -1,0 +1,60 @@
+// Coercion in if else blocks works as so...
+/*
+Booleans are returned as-is.
+undefined turns into false.
+null turns into false.
+0, -0, and NaN turn into false; other numbers turn into true.
+0n turns into false; other BigInts turn into true.
+The empty string "" turns into false; other strings turn into true.
+Symbols turn into true.
+All objects become true.
+*/
+
+// To tease this out in some examples...
+let x = "hello";
+
+if(x) {
+    console.log("X = " + Boolean(x));
+}
+
+while(x) {
+    console.log("X = " + Boolean(x))
+    x = false;
+
+    if(!x) {
+        console.log("X became " + Boolean(x));
+    }
+}
+
+let y = "";
+
+if(!y) {
+    console.log("Y = " + Boolean(y));
+}
+
+while(!y) {
+    console.log("Y = " + Boolean(y));
+    y = true;
+
+    if(y) {
+        console.log("Y became " + Boolean(y));
+    }
+}
+
+let z = 0;
+
+if(!z) {
+    console.log("Z = " + Boolean(z));
+}
+
+while(!z) {
+    console.log("Z = " + Boolean(z));
+    z = true;
+
+    if(z) {
+        console.log("Z became " + Boolean(z));
+    }
+}
+
+// The important thing to note is that x, y, & z are being
+// coerced by conditional blocks.
