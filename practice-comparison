@@ -1,0 +1,36 @@
+const dayStart = "07:30";
+const dayEnd = "17:45";
+
+const verify = /bob/;
+
+console.log(verify.test('bob'));
+
+function scheduleMeeting(startTime,durationMinutes) {
+
+    // This is the declarative or explicit style of coding, stating exactly what to do
+    // and nothing more. It uses syntactic sugar to get to the same end.
+    return startTime + durationMinutes <= dayEnd;
+
+    // Here's the imperative style of this code
+    /*
+        endTime = startTime + durationMinutes;
+
+        if(endTime > dayEnd) {
+            return false;
+        } else {
+            return true;
+        }
+    */
+}
+
+const results = [
+    scheduleMeeting("7:00",15),     
+    scheduleMeeting("07:15",30), 
+    scheduleMeeting("7:30",30),   
+    scheduleMeeting("11:30",60),   
+    scheduleMeeting("17:00",45),
+    scheduleMeeting("17:30",30),   
+    scheduleMeeting("18:00",15),
+];
+
+results.forEach(result => console.log(result));
