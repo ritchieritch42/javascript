@@ -1,7 +1,7 @@
 const dayStart = "07:30";
 const dayEnd = "17:45";
 
-const verify = /bob/;
+const verify = /\d/;
 
 console.log(verify.test('bob'));
 
