@@ -1,24 +1,7 @@
 const dayStart = "07:30";
 const dayEnd = "17:45";
 
-const verify = new RegExp(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/);
-
-function scheduleMeeting(startTime, durationMinutes) {
-  // This is the declarative or explicit style of coding, stating exactly what to do
-  // and nothing more. It uses syntactic sugar to get to the same end.
-  times.forEach((time) => verify.test(time));
-
-  // Here's the imperative style of this code
-  /*
-        endTime = startTime + durationMinutes;
-
-        if(endTime > dayEnd) {
-            return false;
-        } else {
-            return true;
-        }
-    */
-}
+const verify = new RegExp(/^([0-1][0-9]|2[0-3]):[0-5][0-9]$/);
 
 const times = [
   ["7:00", 15],
@@ -30,7 +13,16 @@ const times = [
   ["18:00", 15],
 ];
 
-for (let i = 0; i < times.length; i++) {
-  times[i] = scheduleMeeting(times[i]);
-  console.log(times[i]);
+function scheduleMeeting(times) {
+  times.forEach((time) => {
+    console.log(time[0]);
+    console.log(time[1]);
+    if(verify.test(time[0])) {
+      console.log(Boolean(time[0] + time[1] <= dayEnd))
+    } else {
+      console.log(false);
+    }
+  });
 }
+
+scheduleMeeting(times);
