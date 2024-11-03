@@ -15,14 +15,27 @@ const times = [
 
 function scheduleMeeting(times) {
   const results = [];
+
   times.forEach((time) => {
     // Verify Hour
+    if(!verifyHour.test(time[0][0] + time[0][1])) {
+      if(time[0][1] === ":" && time[0][1] <= 9) {
+        time[0] = "0" + time[0]
+      } else {
+        return false;
+      }
+    }
 
     // Verify Minute
+    if(!verifyMinute.test(time[0][3] + time[0][4])) {
+      return false;
+    }
 
     // Verify not before start of day
+    // Use date time JS capability to add and compare
 
     // Verify not after end of day
+    // Use date time JS capability to add and compare
   });
 }
 
