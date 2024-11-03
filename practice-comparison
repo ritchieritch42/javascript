@@ -22,17 +22,24 @@ function scheduleMeeting(times) {
       if(time[0][1] === ":" && time[0][1] <= 9) {
         time[0] = "0" + time[0]
       } else {
-        return false;
+        return "Incorrect Hour Format";
       }
     }
 
     // Verify Minute
     if(!verifyMinute.test(time[0][3] + time[0][4])) {
-      return false;
+      return "Incorrect Minute Format";
     }
+
+    // Convert time to Date() JS format
+    const date = new Date();
+    date.setHours((time[0][0] + time[0][1]), time[0][3] + time[0][4]);
 
     // Verify not before start of day
     // Use date time JS capability to add and compare
+    if(date.getTime() + time) {
+      return true;
+    }
 
     // Verify not after end of day
     // Use date time JS capability to add and compare
