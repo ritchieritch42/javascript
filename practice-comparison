@@ -26,45 +26,49 @@ function scheduleMeeting(times) {
 
   times.forEach((time) => {
 
-    console.log(time);
-    console.log(time[0][0] + time[0][1]);
+    // Verify semicolon in right position
+    if(time[0][1] === ":") {
+      time[0] = "0" + time[0];
+    }
 
     // Verify Hour
     if(!verifyHour.test(time[0][0] + time[0][1])) {
-      if(time[0][1] === ":") {
-        time[0] = "0" + time[0];
+      results.push(false);
+    } 
+    // Verify Minute
+    else if (!verifyMinute.test(time[0][3] + time[0][4])) {
+      results.push(false);
+    } 
+    // If format of time correct then proceed
+    else {
+      // Convert time to Date() JS format
+      const meetingTime = new Date();
+      meetingTime.setHours(time[0].substring(0, 2));
+      meetingTime.setMinutes(time[0].substring(3, 5));
+
+      const endMeetingTime = meetingTime.getTime() + time[1] * 60 * 1000;
+
+      // Verify not before start of day
+      if(meetingTime < startTime) {
+        results.push(false);
+      } 
+      // Verify not starting after end of day
+      else if (meetingTime.getTime() > endTime){
+        results.push(false);
+      }
+      // Verify meeting doesn't go past end of day
+      else if (endMeetingTime > endTime) {
+        results.push(false);
+      }
+      // Meeting time works --- return true
+      else {
+        results.push(true);
       }
     }
-
-    console.log(time);
-
-    // Verify Minute
-    if(!verifyMinute.test(time[0][3] + time[0][4])) {
-      results.push(false);
-    }
-
-    // Convert time to Date() JS format
-    const meetingTime = new Date();
-    meetingTime.setHours(time[0].substring(0, 2));
-    meetingTime.setMinutes(time[0].substring(3, 5));
-
-    // Verify not before start of day
-    // Use date time JS capability to add and compare
-    if(meetingTime > startTime) {
-      results.push(false);
-    }
-
-    // Verify not after end of day
-    // Use date time JS capability to add and compare
-    if(meetingTime.getTime() + time[1] * 60 * 1000 > endTime) {
-        results.push(false);
-    }
-
-    results.push(true);
   });
 
   results.forEach((result) => console.log(result));
-  return results;
+  return;
 }
 
 scheduleMeeting(times);
