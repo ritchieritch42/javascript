@@ -67,8 +67,7 @@ function scheduleMeeting(times) {
     }
   });
 
-  results.forEach((result) => console.log(result));
-  return;
+  return results;
 }
 
-scheduleMeeting(times);
+console.log(scheduleMeeting(times));
