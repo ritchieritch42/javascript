@@ -1,57 +1,51 @@
 const dayStart = "07:30";
 const dayEnd = "17:45";
 
-const verifyHour = new RegExp(/^(0[0-9]|1[0-9]|2[0-3])$/);
-const verifyMinute = new RegExp(/^[0-5][0-9]$/);
-
 function scheduleMeeting(startTime, durationMinutes) {
   // Verify semicolon in right position, add zero as needed
   if(startTime[1] === ":") {
     startTime = "0" + startTime;
   }
 
-  let hours = startTime.substring(0, 2)
-  let minutes = startTime.substring(3, 5)
+  let hours = Number(startTime.substring(0, 2));
+  let minutes = Number(startTime.substring(3, 5));
 
   // Verify Hour Number
-  if(!verifyHour.test(hours)) {
+  if(hours < 0 || hours > 23) {
     return false;
   } 
   // Verify Minute Number
-  else if (!verifyMinute.test(minutes)) {
+  if (minutes < 0 || minutes > 59) {
     return false;
   } 
 
-  // If format of time correct then proceed
-  else {
+  // Verify time isn't before start of day
+  if (hours < dayStart.substring(0, 2)) {
+    return false;
+  } 
+  if (hours == dayStart.substring(0, 2) && minutes < dayStart.substring(3, 5)) {
+    return false;
+  } 
 
-    // Verify time isn't before start of day
-    if (hours < dayStart.substring(0, 2)) {
-      return false;
-    } else if (hours == dayStart.substring(0, 2) && minutes < dayStart.substring(3, 5)) {
-      return false;
-    } 
-
-    // Add durationMinutes to minutes and up hour as necessary
-    minutes = minutes + durationMinutes;
-    if (minutes >= 60) {
-      hours++;
-      minutes - 60;
-    }
-
-    // Verify meeting doesn't go past endOfDay
-    if (hours > dayEnd.substring(0, 2)) {
-      return false;
-    } else if (hours <= dayEnd.substring(0, 2) && minutes <= dayEnd.substring(3, 5)) {
-      return true;
-    }
+  // Add durationMinutes to minutes and up hour as necessary
+  minutes = minutes + durationMinutes;
+  while (minutes >= 60) {
+    minutes = minutes - 60;
+    hours++;
   }
+
+  // Verify meeting doesn't go past endOfDay
+  if (hours == dayEnd.substring(0, 2) && minutes <= dayEnd.substring(3, 5)) {
+    return true;
+  }
+  return hours < dayEnd.substring(0, 2);
 }
 
-console.log(scheduleMeeting("7:00",15));
-console.log(scheduleMeeting("07:15",30));
-console.log(scheduleMeeting("7:30",30));
-console.log(scheduleMeeting("11:30",60));
-console.log(scheduleMeeting("17:00",45));
-console.log(scheduleMeeting("17:30",30));
-console.log(scheduleMeeting("18:00",15));
+console.log(scheduleMeeting("7:00",15)); // false
+console.log(scheduleMeeting("07:15",30)); // false
+console.log(scheduleMeeting("7:30",30)); // true
+console.log(scheduleMeeting("11:30",60)); // true
+console.log(scheduleMeeting("17:00",45)); // true
+console.log(scheduleMeeting("17:30",30)); // false
+console.log(scheduleMeeting("18:00",15)); // false
+console.log(scheduleMeeting("16:00",50)); // true
