@@ -10,15 +10,15 @@ function scheduleMeeting(startTime, durationMinutes) {
     startTime = "0" + startTime;
   }
 
-  let hour = startTime.substring(0, 2)
-  let minute = startTime.substring(3, 5)
+  let hours = startTime.substring(0, 2)
+  let minutes = startTime.substring(3, 5)
 
   // Verify Hour Number
-  if(!verifyHour.test(hour)) {
+  if(!verifyHour.test(hours)) {
     return false;
   } 
   // Verify Minute Number
-  else if (!verifyMinute.test(minute)) {
+  else if (!verifyMinute.test(minutes)) {
     return false;
   } 
 
@@ -26,17 +26,25 @@ function scheduleMeeting(startTime, durationMinutes) {
   else {
 
     // Verify time isn't before start of day
-    if (hour < dayStart.substring(0, 2)) {
+    if (hours < dayStart.substring(0, 2)) {
       return false;
-    } else if (hour == dayStart.substring(0, 2) && minute < dayStart.substring(3, 5)) {
+    } else if (hours == dayStart.substring(0, 2) && minutes < dayStart.substring(3, 5)) {
       return false;
     } 
 
-    if (minute + durationMinutes >= 60) {
-      hour++;
-      minute = (minute + durationMinutes) - 60;
+    // Add durationMinutes to minutes and up hour as necessary
+    minutes = minutes + durationMinutes;
+    if (minutes >= 60) {
+      hours++;
+      minutes - 60;
     }
 
+    // Verify meeting doesn't go past endOfDay
+    if (hours > dayEnd.substring(0, 2)) {
+      return false;
+    } else if (hours <= dayEnd.substring(0, 2) && minutes <= dayEnd.substring(3, 5)) {
+      return true;
+    }
   }
 }
 
