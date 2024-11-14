@@ -45,3 +45,5 @@ console.log(scheduleMeeting("17:00", 45)); // true
 console.log(scheduleMeeting("17:30", 30)); // false
 console.log(scheduleMeeting("18:00", 15)); // false
 console.log(scheduleMeeting("16:00", 50)); // true
+console.log(scheduleMeeting("10:00", 180)); // true
+console.log(scheduleMeeting("16:00", 180)); // false
