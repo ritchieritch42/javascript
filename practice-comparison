@@ -3,49 +3,45 @@ const dayEnd = "17:45";
 
 function scheduleMeeting(startTime, durationMinutes) {
   // Verify semicolon in right position, add zero as needed
-  if(startTime[1] === ":") {
+  if (startTime[1] === ":") {
     startTime = "0" + startTime;
   }
 
+  let startOfDay =
+    Number(dayStart.substring(0, 2)) * 60 + Number(dayStart.substring(3, 5));
+  let endOfDay =
+    Number(dayEnd.substring(0, 2)) * 60 + Number(dayEnd.substring(3, 5));
+
   let hours = Number(startTime.substring(0, 2));
   let minutes = Number(startTime.substring(3, 5));
+  let meetingStartTime = hours * 60 + minutes;
+  let meetingEndTime = meetingStartTime + durationMinutes;
 
   // Verify Hour Number
-  if(hours < 0 || hours > 23) {
+  if (hours < 0 || hours > 23) {
     return false;
-  } 
+  }
   // Verify Minute Number
   if (minutes < 0 || minutes > 59) {
     return false;
-  } 
-
+  }
   // Verify time isn't before start of day
-  if (hours < dayStart.substring(0, 2)) {
+  if (meetingStartTime < startOfDay) {
     return false;
-  } 
-  if (hours == dayStart.substring(0, 2) && minutes < dayStart.substring(3, 5)) {
-    return false;
-  } 
-
-  // Add durationMinutes to minutes and up hour as necessary
-  minutes = minutes + durationMinutes;
-  while (minutes >= 60) {
-    minutes = minutes - 60;
-    hours++;
   }
-
   // Verify meeting doesn't go past endOfDay
-  if (hours == dayEnd.substring(0, 2) && minutes <= dayEnd.substring(3, 5)) {
-    return true;
+  if (meetingEndTime > endOfDay) {
+    return false;
   }
-  return hours < dayEnd.substring(0, 2);
+
+  return true;
 }
 
-console.log(scheduleMeeting("7:00",15)); // false
-console.log(scheduleMeeting("07:15",30)); // false
-console.log(scheduleMeeting("7:30",30)); // true
-console.log(scheduleMeeting("11:30",60)); // true
-console.log(scheduleMeeting("17:00",45)); // true
-console.log(scheduleMeeting("17:30",30)); // false
-console.log(scheduleMeeting("18:00",15)); // false
-console.log(scheduleMeeting("16:00",50)); // true
+console.log(scheduleMeeting("7:00", 15)); // false
+console.log(scheduleMeeting("07:15", 30)); // false
+console.log(scheduleMeeting("7:30", 30)); // true
+console.log(scheduleMeeting("11:30", 60)); // true
+console.log(scheduleMeeting("17:00", 45)); // true
+console.log(scheduleMeeting("17:30", 30)); // false
+console.log(scheduleMeeting("18:00", 15)); // false
+console.log(scheduleMeeting("16:00", 50)); // true
