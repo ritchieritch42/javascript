@@ -1,0 +1,27 @@
+// Math operators in JS
+// There's more than this but here's many
+let x = 1;
+let y = 2;
+let z = 3;
+
+results = [
+    Math.pow(2, 53),
+    Math.round(.6),
+    Math.ceil(.6),
+    Math.floor(.6),
+    Math.abs(-5),
+    Math.max(x,y,z),
+    Math.min(x,y,z),
+    Math.random(),
+    Math.PI,
+    Math.E,
+    Math.sqrt(3),
+    Math.pow(3, 1/3),
+    Math.sin(0),
+    Math.log(10),
+    Math.log(100)/Math.LN10
+]
+
+results.forEach(result => {
+    console.log(result);
+});
