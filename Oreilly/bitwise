@@ -46,6 +46,32 @@ console.log(b ^ b);
 // 00000010
 // 00000000 = 0
 
+console.log(~a);
+// 00000001
+// 11111110 = -2 (two's complement form where the first bit
+// denotes the sign +/-)
+
+console.log(~b);
+// 00000010
+// 11111101 --- to find the result of this negative number
+// invert all bits and add one
+// 11111101 becomes 00000011 = 3 (negative three)
+
+console.log(~3);
+// 00000011
+// 11111100
+/*
+    00000011
++   00000001
+--------------- 
+    00000100 = 4 (negative)
+*/
+
+console.log(~4)
+// 00000101
+// 00000001
+// 00000110 = -5
+
 /*  Results should be---
 *   3
 *   0
@@ -56,4 +82,8 @@ console.log(b ^ b);
 *   3
 *   0
 *   0
+*   -2
+*   -3
+*   -4
+*   -5
 */
