@@ -1,0 +1,5 @@
+// Underscore can be used in hexadecimal, binary, ints, etc 
+// to  help improve readability
+
+let million = 1_000_000;
+console.log(million);
