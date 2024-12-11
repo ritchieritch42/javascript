@@ -1,29 +1,21 @@
-ogArray = [1, 2, 3, 4, 5];
+// Basic copyWithin Functionality with one argument (index)
+myArray = [1, 2, 3, 4, 5];
 
-myArray = [...ogArray];
-myArray.forEach(() => {
-    console.log(myArray.copyWithin(1));
-});
+function testCopyWithin(array, index) {
+    let value = array[0];
 
-console.log('\n');
+    array.forEach(() => {
+        array.copyWithin(index);
+    });
 
-mySecondArray = [...ogArray];
-myArray.forEach(() => {
-    console.log(mySecondArray.copyWithin(2));
-});
+    console.log(`${array}\n`);
+    
+    array.forEach((_, location) => {
+        array[location] = value++;
+    });
+    return;
+}
 
-console.log('\n');
-
-myThirdArray = [...ogArray];
-myArray.forEach(() => {
-    console.log(myThirdArray.copyWithin(3));
-});
-
-console.log('\n');
-
-myFourthArray = [...ogArray];
-console.log(myFourthArray);
-
-myFourthArray.forEach(() => {
-    console.log(myFourthArray.copyWithin(4));
-});
+for (let i = 0, length = myArray.length; i <= length; i++) {
+    testCopyWithin(myArray, i);
+}
