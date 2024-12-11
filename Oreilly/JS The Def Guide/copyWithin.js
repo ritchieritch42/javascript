@@ -25,9 +25,9 @@ for (let i = 0, length = myArray.length; i <= length; i++) {
 // Here's some other examples showing this
 // Target is required
 // The start default is 0 unless specified
-// The end default is length -1 unless specified
-// The sequence copied is start to end
-// The place pasted is target
+// The end default is array.length unless specified
+// The sequence copied is start value to end value
+// The place pasted is target index
 
 newArray = [...myArray];
 console.log(newArray.copyWithin(0, 5) + '\n') // 1, 2, 3, 4, 5
